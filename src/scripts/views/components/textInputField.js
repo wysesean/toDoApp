@@ -23,6 +23,7 @@ var TextInputField = React.createClass({
 				uniqueID:STORE.getUniqueID(),
 				taskDescription: event.target.value
 			}
+			location.hash = 'allTasks'
 			ACTIONS.addTask(obj)
 			console.log('heres whats in data now', STORE.data)
 			event.target.value = ''
@@ -33,7 +34,7 @@ var TextInputField = React.createClass({
 	render:function(){
 		return(
 			<div id='textInput'>
-				<textarea onKeyPress={this._handleKeyDown} className='autoExpand' rows='3' data-min-rows='3'></textarea>
+				<textarea onKeyPress={this._handleKeyDown} className='autoExpand' rows='3' data-min-rows='3' placeholder='Create Task'></textarea>
 			</div>
 		)
 	}

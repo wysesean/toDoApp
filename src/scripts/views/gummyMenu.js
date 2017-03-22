@@ -29,19 +29,27 @@ var GummyMenu = React.createClass({
 	render:function(){
 		return(
 			<div className='slider'>
-				<nav className='slider-nav'>
-					<div onClick={()=>{this.changeHash('allTasks')}} className={this.state.activeValue==='allTasks'?'allTaskButton active loading-panel':'allTaskButton loading-panel'}>
-							<h3>All</h3>
+				<div id='input-wrapper'>
+					<nav className='slider-nav'>
+						<div id='button-wrapper'>
+							<div onClick={()=>{this.changeHash('allTasks')}} className={this.state.activeValue==='allTasks'?'allTaskButton active task-button':'allTaskButton task-button'}>
+									<h3>All</h3>
+							</div>
+						</div>
+						<div id='button-wrapper'>
+							<div onClick={()=>{this.changeHash('doneTasks')}} className={this.state.activeValue==='doneTasks'?'doneTaskButton active task-button':'doneTaskButton task-button'}>
+								<h3>Done</h3>
+							</div>
+						</div>
+						<div id='button-wrapper'>
+							<div onClick={()=>{this.changeHash('undoneTasks')}} className={this.state.activeValue==='undoneTasks'?'undoneTaskButton active task-button':'undoneTaskButton task-button'}>
+									<h3>Undone</h3>
+							</div>
+						</div>
+					</nav>
+					<div className='text-input'>
+						<TextInputField />
 					</div>
-					<div onClick={()=>{this.changeHash('doneTasks')}} className={this.state.activeValue==='doneTasks'?'doneTaskButton active loading-panel':'doneTaskButton loading-panel'}>
-						<h3>Done</h3>
-					</div>
-					<div onClick={()=>{this.changeHash('undoneTasks')}} className={this.state.activeValue==='undoneTasks'?'undoneTaskButton active loading-panel':'undoneTaskButton loading-panel'}>
-							<h3>Undone</h3>
-					</div>
-				</nav>
-				<div className='text-input'>
-					<TextInputField />
 				</div>
 				<div className='slider-inner'>
 					<AllTaskView />

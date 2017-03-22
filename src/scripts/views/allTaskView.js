@@ -13,8 +13,12 @@ var AllTaskView = React.createClass({
 	},
 	render: function(){
 		let classValue = 'slide allSlide'
+		if(this.state.activeValue==='allTasks'){
+			console.log('im returning true')
+			$('.slider').css('background-color','#e94f37')
+		}
 		return(
-			<div className={classValue+=this.state.activeValue===' allTasks'?' active':''}>
+			<div className={classValue+=this.state.activeValue==='allTasks'?' active':''}>
 				<AllTasksList tasks={STORE.data.allTasks} />
 			</div>
 		)
@@ -68,9 +72,9 @@ var TaskElement = React.createClass({
 	},
 	render:function(){
 		return(
-			<div key={this.props.uniqueID} className='task-element' id={this.props.uniqueID}>
+			<div key={this.props.uniqueID}  id='task-element' onClick={()=>{this.tickCheckBox(this.props.uniqueID)}}>
 				<div className='task-wrapper'>
-					<div className={this.state.buttonClicked?'tickBox ticked':'tickBox'} onClick={()=>{this.tickCheckBox(this.props.uniqueID)}}></div>
+					<div className={this.state.buttonClicked?'tickBox ticked':'tickBox'}></div>
 					<p>{this.props.taskDescription}</p>
 				</div>
 			</div>

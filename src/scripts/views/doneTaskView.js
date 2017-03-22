@@ -12,9 +12,10 @@ var DoneTaskView = React.createClass({
 		return STORE.data
 	},
 	render: function(){
-		let classValue = 'slide allSlide'
+		let classValue = 'slide doneSlide'
+
 		return(
-			<div className={classValue+=this.state.activeValue===' allTasks'?' active':''}>
+			<div className={classValue+=this.state.activeValue==='doneTasks'?' active':''}>
 				<DoneTasksList tasks={STORE.data.doneTasks} />
 			</div>
 		)
@@ -47,8 +48,10 @@ var TaskElement = React.createClass({
 	
 	render:function(){
 		return(
-			<div key={this.props.uniqueID} className='task-element' id={this.props.uniqueID}>
-				<p>{this.props.taskDescription}</p>
+			<div key={this.props.uniqueID}  id='task-element'>
+				<div className='task-wrapper'>
+					<p>{this.props.taskDescription}</p>
+				</div>
 			</div>
 		)
 	}

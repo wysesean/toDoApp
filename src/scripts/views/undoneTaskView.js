@@ -12,9 +12,12 @@ var UndoneTaskView = React.createClass({
 		return STORE.data
 	},
 	render: function(){
-		let classValue = 'slide allSlide'
+		let classValue = 'slide undoneSlide'
+		if(this.state.activeValue==='undoneTasks'){
+			$('.slider').css('background-color','#3f88c5')
+		}
 		return(
-			<div className={classValue+=this.state.activeValue===' allTasks'?' active':''}>
+			<div className={classValue+=this.state.activeValue==='undoneTasks'?' active':''}>
 				<UndoneTasksList tasks={STORE.data.undoneTasks} />
 			</div>
 		)
@@ -46,8 +49,10 @@ var UndoneTasksList = React.createClass({
 var TaskElement = React.createClass({
 	render:function(){
 		return(
-			<div key={this.props.uniqueID} className='task-element' id={this.props.uniqueID}>
-				<p>{this.props.taskDescription}</p>
+			<div key={this.props.uniqueID}  id='task-element'>
+				<div className='task-wrapper'>
+					<p>{this.props.taskDescription}</p>
+				</div>
 			</div>
 		)
 	}
